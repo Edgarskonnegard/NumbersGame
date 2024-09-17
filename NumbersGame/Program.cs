@@ -2,14 +2,20 @@
 {
     internal class Program
     {
-        static bool CheckGuess(int i, int correctValue) // Kollar om gissningen är korrekt
+        /// <summary>
+        /// A method to check a guess with a specified target value and prints a message regarding the guessed values accuracy.
+        /// </summary>
+        /// <param name="guess">The players guess</param>
+        /// <param name="correctValue">The target value</param>
+        /// <returns></returns>
+        static bool CheckGuess(int guess, int correctValue) // Kollar om gissningen är korrekt
         {
-            if (i == correctValue)
+            if (guess == correctValue)
             {
                 Console.WriteLine("Wohoo! Du gjorde det!");
                 return true;
             }
-            else if (i <= correctValue)
+            else if (guess <= correctValue)
             {
                 Console.WriteLine("Tyvärr du gissade för lågt!");
                 return false;
@@ -25,19 +31,21 @@
         {
             Console.WriteLine("Välkommen! Jag tänker på ett nummer. Kan du gissa vilket? Du får fem försök.");
 
-            // Genererar ett slumpmässigt tal mellan 1 och 20.
+            // Generate a random number between 1 and 20 from the class Random with the method Next.
             Random rng = new Random(); 
-            int num = rng.Next(1, 21);
+            int target = rng.Next(1, 21);
 
-            int userGuess = 0;
+            int playerGuess = 0;
             int count = 0;
 
+            // Loop for the five attempts the player has.
             while (count < 5)
             {
+                // Uses try catch to prevent user from an invalid input.
                 try
                 {
-                    userGuess = Convert.ToInt32(Console.ReadLine());
-                    if (CheckGuess(userGuess, num))
+                    playerGuess = Convert.ToInt32(Console.ReadLine());
+                    if (CheckGuess(playerGuess, target))
                     {
                         break;
                     }
@@ -50,6 +58,7 @@
                 }
             }
 
+            // "Game over" message for player. 
             if (count == 5)
             {
                 Console.WriteLine("Tyvärr du lyckades inte gissa talet på fem försök!");
