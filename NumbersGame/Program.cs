@@ -8,8 +8,9 @@
         /// <param name="guess">The players guess</param>
         /// <param name="correctValue">The target value</param>
         /// <returns></returns>
-        static bool CheckGuess(int guess, int correctValue) // Kollar om gissningen är korrekt
+        static bool CheckGuess(int guess, int correctValue) 
         {
+            // Method to check a players guess.
             if (guess == correctValue)
             {
                 Console.WriteLine("Wohoo! Du gjorde det!");
